@@ -2,6 +2,7 @@ import React, {useState, useEffect} from 'react';
 import { StatusBar } from 'expo-status-bar';
 import Map from './components/Map';
 import Modal  from './components/Modal';
+import Input from './components/Input';
 import { StyleSheet, Text, View } from 'react-native';
 
 export default function App() {
@@ -21,7 +22,9 @@ export default function App() {
       visibility={visibility}
       onLongPress={() => setVisibility(false)}
       >
-        <Text>Hola Mundo</Text>
+        <Input 
+        tietle='Nombre'
+        />
       </Modal>
       <StatusBar style="auto" />
     </View>
