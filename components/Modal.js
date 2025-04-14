@@ -2,7 +2,7 @@ import React from 'react';
 import { useState } from "react";
 import { View, Text, StyleSheet, Modal } from 'react-native'
 
-export default function CustomModal({children, visibility} = props){
+export default function CustomModal({children, visibility}){
     return (
     <View> 
       <Modal
@@ -12,7 +12,7 @@ export default function CustomModal({children, visibility} = props){
       >
         <View style={styles.centerModal}>
           <View style={styles.modalView} >
-          <Text>{children}</Text>
+          {children}
           </View>
         </View>
       </Modal>
@@ -31,8 +31,8 @@ const styles = StyleSheet.create({
         backgroundColor: '#fff',
         justifyContent: 'center',
         alignItems: 'center',
-        width: '20%',
-        height: '6%',
+        width: '70%',
+        height: '45%',
         borderRadius: 4,
         shadowColor: '#000',
         shadowOffset:{

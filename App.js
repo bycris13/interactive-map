@@ -3,16 +3,31 @@ import { StatusBar } from 'expo-status-bar';
 import Map from './components/Map';
 import Modal  from './components/Modal';
 import Input from './components/Input';
-import { StyleSheet, Text, View } from 'react-native';
+import PressableButton from './components/PressableButton';
+import {  Pressable, StyleSheet, Text, View } from 'react-native';
 
 export default function App() {
   const [visibility, setVisibility] = useState(false);
   const [points, setPoints] = useState([]);
+  const [pointTem, setPointTemp] = useState({});
+  const [name, setName] = useState('');
+  // Cuando se hace una plsacion larga en el mapa, guarda las coordenadas y las muestra.
   const handleLongPress = ({nativeEvent}) => {
+    // las coordenadas geográficas (latitud y longitud) del lugar donde hiciste la pulsación larga.
+    setPointTemp(nativeEvent.coordinate);
     console.log(nativeEvent);
-    const  newPoints = points.concat({coordinate: nativeEvent.coordinate});
-    setPoints(newPoints);
     setVisibility(true);
+  }
+  // Texto que le entra al input
+  const handleChangeText = (text) =>{
+    setName(text);
+  }
+
+  const handleSubmit = () => {
+    const newPoint = {coordinate: pointTem, name: name}
+    setPointTemp(points.concat(newPoint));
+    setVisibility(false);
+    setName('');
   }
 
   return (
@@ -23,8 +38,10 @@ export default function App() {
       onLongPress={() => setVisibility(false)}
       >
         <Input 
-        tietle='Nombre'
-        />
+        title='Nombre'
+        placeholder= 'Nombre del Punto'
+        onChangeText={handleChangeText}/>
+       <PressableButton title='Aceptar' onPress={() => handleSubmit()}/>
       </Modal>
       <StatusBar style="auto" />
     </View>
