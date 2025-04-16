@@ -1,8 +1,7 @@
 import React from 'react';
-import { useState } from "react";
 import { View, Text, StyleSheet, Modal } from 'react-native'
 
-export default function CustomModal({children, visibility}){
+export default function CustomModal({children, visibility, modalStyle}){
     return (
     <View> 
       <Modal
@@ -11,7 +10,7 @@ export default function CustomModal({children, visibility}){
       visible={visibility}
       >
         <View style={styles.centerModal}>
-          <View style={styles.modalView} >
+          <View style={[styles.modalView, modalStyle]} >
           {children}
           </View>
         </View>
@@ -31,8 +30,7 @@ const styles = StyleSheet.create({
         backgroundColor: '#fff',
         justifyContent: 'center',
         alignItems: 'center',
-        width: '70%',
-        height: '45%',
+        padding: 10,
         borderRadius: 4,
         shadowColor: '#000',
         shadowOffset:{
@@ -40,5 +38,4 @@ const styles = StyleSheet.create({
           height: 4
         }
     }
-
 });

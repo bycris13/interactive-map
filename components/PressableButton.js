@@ -5,7 +5,7 @@ export default function PressableButton({title, onPress}) {
   return (
     <View>
       {/* Cambia la opacidad a 0.7 cuando se presiona el botón */}
-      <Pressable style={({pressed}) => [styles.buttton, {opacity: pressed ? 0.7 : 1} ]} onPress={onPress}>
+      <Pressable style={({pressed}) => [ {opacity: pressed ? 0.7 : 1}, styles.buttton, ]} onPress={onPress}>
         <Text style={styles.textColor}>{title}</Text>
       </Pressable>
     </View>
@@ -19,7 +19,7 @@ const styles = StyleSheet.create({
         height: 42,
         width: 200,
         borderRadius: 4,
-        marginTop: 20,
+        marginTop: 35,
         justifyContent: 'center',
         alignItems:'center',
         shadowColor:'#000',
