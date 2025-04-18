@@ -5,7 +5,7 @@ import Modal  from './components/Modal';
 import Input from './components/Input';
 import PressableButton from './components/PressableButton';
 import List from './components/List';
-import {  Pressable, StyleSheet, Text, View } from 'react-native';
+import {  Pressable, StyleSheet, Text, View, Alert } from 'react-native';
 import Panel from './components/Panel';
 
 export default function App() {
@@ -33,6 +33,21 @@ export default function App() {
   }
 
   const handleSubmit = () => {
+
+    const emptyName = name.trim();
+    // Vlida que el nombre no venta vacio
+    if (emptyName === '') {
+      Alert.alert('Error:', 'El punto debe tener un nombre');
+      return;
+    }
+    // Si hay algun punto nombrado igual en la lista de points me regresa true.
+    const pointNameExist = points.some(p => p.name.trim() === name.trim());
+    // Si los puntos nombrados son exactamente iguales se envia un error.
+    if (pointNameExist) {
+      Alert.alert('Error:', 'Ya existe un punto con ese nombre.');
+      return;
+    }
+
     const newPoint = {coordinate: pointTem, name: name}
     setPoints(points.concat(newPoint)); 
     setVisibility(false);
