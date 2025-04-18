@@ -19,7 +19,7 @@ export default function App() {
   
   const tooglePointsFilter = () => setPointsFilter(!pointsFilter)
 
-  // Cuando se hace una plsacion larga en el mapa, guarda las coordenadas y las muestra.
+  // Cuando se hace una pulsacion larga en el mapa, guarda las coordenadas y las muestra.
   const handleLongPress = ({nativeEvent}) => {
     setVisibilityFilter('new_points');
     // las coordenadas geográficas (latitud y longitud) del lugar donde hiciste la pulsación larga.
@@ -53,7 +53,7 @@ export default function App() {
       <Modal 
       visibility={visibility}
       modalStyle={visibilityFilter === 'new_points' 
-      ? { width: '70%', height: '25%' } 
+      ? { width: '62%', height: '35%', justifyContent: 'center' } 
       : { width: '90%', height: '80%' }
     }
       onLongPress={() => setVisibility(false)}>
@@ -63,11 +63,13 @@ export default function App() {
     ? (
       <View style={styles.form}>
         <Input 
-          title='Nombre'
+          title='Nombre:'
           placeholder='Nombre del Punto'
           onChangeText={handleChangeText}
         />
-        <PressableButton title='Aceptar' onPress={() => handleSubmit()}/>
+       <View style={styles.modalButton}>
+        <PressableButton  title='Aceptar' onPress={() => handleSubmit()}/>
+       </View>
       </View>
     )
     : <List points={points} closeModal={() => setVisibility(false)}/>
@@ -80,7 +82,11 @@ export default function App() {
 
 const styles = StyleSheet.create({
   form:{
-    padding: 15
+    padding: 15,
+  },
+
+  modalButton:{
+    marginTop: '10%'
   },
 
   container: {

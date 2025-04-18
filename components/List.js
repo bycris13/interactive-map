@@ -1,55 +1,57 @@
 import { View, Text, StyleSheet, Dimensions, FlatList, Pressable } from 'react-native'
 import React from 'react'
 
-export default function List({points, closeModal, pressed}) {
+export default function List({points, closeModal}) {
   return (
-    <>
-    <View>
+    <View style={styles.wrapper}>
       <FlatList
-      style={styles.listStyle}
         data={points.map(x => x.name)}
         renderItem={({ item }) => <Text style={styles.item}>{item}</Text>}
-        keyExtractor={item => item} 
-        />
+        keyExtractor={item => item}
+      />
+      <View style={styles.buttonWrapper}>
+        <Pressable onPress={closeModal} style={styles.button}>
+          <Text style={styles.colorButto}>Cerrar</Text>
+        </Pressable>
+      </View>
     </View>
-    <View style={styles.button}>
-    <Pressable  onPress={closeModal}>
-        <Text style={styles.colorButto}>Cerrar</Text>
-    </Pressable>
-    </View>
-    </>
   )
 }
 
+
 const styles = StyleSheet.create({
-    colorButto:{
-      color: '#fff',
-    },
+  wrapper: {
+    flex: 1,
+    justifyContent: 'space-between',
+  },
 
-    button:{
-        backgroundColor: '#0079fe',
-        width: '20%',
-        height: '6%',
-        justifyContent: 'center',
-        alignItems: 'center',
-        marginBottom: '22%',
-        borderRadius: 5,
-        shadowColor:'#000',
-        shadowOffset: {width: 1, height: 2},
-        shadowOpacity: 0.25,
-        shadowRadius: 4,
-        elevation: 5,
-    },
+  buttonWrapper: {
+    alignItems: 'center',
+    marginBottom: 10,
+  },
 
-    listStyle: {
-      marginTop: '20%'
-    },
+  colorButto:{
+    color: '#fff',
+  },
 
-    item: {
-        borderBottomWidth: 1,
-        borderBlockEndColor: '#ccc',
-        width: Dimensions.get('window').width,
-        height: 45,
-        padding: 15,
-    }
+  button:{
+    backgroundColor: '#0079fe',
+    width: '25%',
+    height: 40,
+    justifyContent: 'center',
+    alignItems: 'center',
+    borderRadius: 5,
+    shadowColor:'#000',
+    shadowOffset: {width: 1, height: 2},
+    shadowOpacity: 0.25,
+    shadowRadius: 4,
+    elevation: 5,
+  },
+    
+  item: {
+    borderBottomWidth: 1,
+    borderBottomColor: '#ccc',
+    width: Dimensions.get('window').width,
+    padding: 10,
+  }
 });

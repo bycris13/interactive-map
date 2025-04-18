@@ -12,11 +12,12 @@ export default Input = ({title, ...rest}) => {
 
 const styles = StyleSheet.create({
   wrapper: {
-    height: 40
+    height: 40,
+    marginVertical: '16%',
   },
 
   inputBorder:{
-    height: '70%',
+    height: '100%',
     borderBottomColor: '#ccc',
     borderBottomWidth: 1,
   }

@@ -16,16 +16,15 @@ const styles = StyleSheet.create({
 
     buttton:{
         backgroundColor: '#0079fe',
-        height: 42,
-        width: 200,
         borderRadius: 4,
-        marginTop: 35,
+        height: 38,
         justifyContent: 'center',
         alignItems:'center',
         shadowColor:'#000',
         shadowOffset: {width: 0, height: 4},
         shadowOpacity: 0.25,
-        shadowRadius: 4, elevation: 5,
+        shadowRadius: 4,
+        elevation: 5,
     },
 
     textColor:{

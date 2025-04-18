@@ -5,13 +5,21 @@ import PressableButton from './PressableButton';
 export default function Panel({onPressLeft, textLefft, togglePointsFilter }) {
   return (
     <View style={styles.panel}>
+      <View style={styles.hugeBotton}>
       <PressableButton title={textLefft} onPress={onPressLeft}/>
-      <PressableButton title='Mostrar/Oculatar' onPress={togglePointsFilter}/>
+      </View>
+      <View style={styles.hugeBotton}>
+      <PressableButton  title='Mostrar/Oculatar' onPress={togglePointsFilter}/>
+      </View>
     </View>
   )
 }
 
 const styles = StyleSheet.create({
+
+  hugeBotton:{
+    width: '45%',
+  },
 
   panel: {
     flex: 1,
@@ -19,7 +27,7 @@ const styles = StyleSheet.create({
     justifyContent: 'space-evenly',
     alignItems: 'center',
     position: 'absolute',
-    width: '100%',
     bottom: 40,
+    width: '100%',
   },
 });
